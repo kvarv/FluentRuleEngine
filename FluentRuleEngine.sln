@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{F285A743-024E-4284-9ADA-AADFFB7A500B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentRuleEngine", "FluentRuleEngine\FluentRuleEngine.csproj", "{79E4FBAB-14E6-49F3-AE6B-CA5FD3BE7BCC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F285A743-024E-4284-9ADA-AADFFB7A500B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F285A743-024E-4284-9ADA-AADFFB7A500B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F285A743-024E-4284-9ADA-AADFFB7A500B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F285A743-024E-4284-9ADA-AADFFB7A500B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79E4FBAB-14E6-49F3-AE6B-CA5FD3BE7BCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79E4FBAB-14E6-49F3-AE6B-CA5FD3BE7BCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79E4FBAB-14E6-49F3-AE6B-CA5FD3BE7BCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79E4FBAB-14E6-49F3-AE6B-CA5FD3BE7BCC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
