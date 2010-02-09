@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using FluentRuleEngine;
 using Xunit;
-using XunitExt;
+using Xunit.Extensions;
 
 namespace Tests
 {
