@@ -1,51 +1,43 @@
+﻿using System;
+using System.Linq.Expressions;
+
 namespace FluentRuleEngine
 {
-    public class Rule
-    {
-        public bool Condition;
-        public delegate void Action();
-        public Action ActionToExecute;
-        public string Name { get; set; }
-        public string RuleDescription { get; set; }
+	public class Rule<T>
+	{
+		private readonly Action<T> _action;
+		private readonly Expression<Predicate<T>> _condition;
+		private readonly string _name;
+		private string _description;
 
-        public Rule(string name)
-        {
-            Name = name;
-        }
+		public Rule(string name, string description, Expression<Predicate<T>> condition, Action<T> action)
+		{
+			_name = name;
+			_condition = condition;
+			_action = action;
+			_description = description;
+		}
 
-        public Rule Description(string description)
-        {
-            RuleDescription = description;
-            return this;
-        }
+		public bool CanExecute(T target)
+		{
+			if (_condition == null) return false;
+			Predicate<T> condition = _condition.Compile();
+			return condition(target);
+		}
 
-        public bool And(bool condition)
-        {
-            return condition;
-        }
+		public void Execute(T target)
+		{
+			if (_action == null) return;
+			_action(target);
+		}
 
-        public bool Or(bool condition)
-        {
-            return condition;
-        }
-
-
-        public void Execute()
-        {
-            if (Condition && ActionToExecute != null)
-                ActionToExecute();
-        }
-
-        public Rule When(bool condition)
-        {
-            Condition = condition;
-            return this;
-        }
-
-        public Rule Then(Action action)
-        {
-            ActionToExecute = action;
-            return this;
-        }
-    }
+		public void PrintRule()
+		{
+			if(!string.IsNullOrEmpty(_name)) 
+				Console.WriteLine(_name);
+			if (!string.IsNullOrEmpty(_description)) 
+				Console.WriteLine("  " + _description);
+			Console.WriteLine("  Condition: " + _condition + "\n");
+		}
+	}
 }

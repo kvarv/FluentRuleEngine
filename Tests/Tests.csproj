@@ -53,10 +53,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Task.cs" />
-    <Compile Include="TaskRuleEngine.cs" />
-    <Compile Include="Tests.cs" />
+    <Compile Include="RuleEngineBuilderTests.cs" />
+    <Compile Include="RuleEngineTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Target.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FluentRuleEngine\FluentRuleEngine.csproj">

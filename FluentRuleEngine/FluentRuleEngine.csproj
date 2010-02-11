@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{79E4FBAB-14E6-49F3-AE6B-CA5FD3BE7BCC}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -45,9 +45,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Extensions.cs" />
+    <Compile Include="Builders\RuleBaseBuilder.cs" />
+    <Compile Include="Builders\RuleBuilder.cs" />
+    <Compile Include="Builders\RuleEngineBuilder.cs" />
+    <Compile Include="Builders\RuleSetBuilder.cs" />
+    <Compile Include="Builders\RuleSetExpression.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rule.cs" />
+    <Compile Include="RuleBase.cs" />
     <Compile Include="RuleEngine.cs" />
     <Compile Include="RuleSet.cs" />
   </ItemGroup>

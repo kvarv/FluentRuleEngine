@@ -2,27 +2,21 @@ using System.Collections.Generic;
 
 namespace FluentRuleEngine
 {
-    public class RuleSet
-    {
-        public List<Rule> RuleList = new List<Rule>();
-        public string Name;
+	public class RuleSet<T>
+	{
+		private string _name;
 
-        public RuleSet(string name)
-        {
-            Name = name;
-        }
+		public RuleSet(string name)
+		{
+			_name = name;
+			Rules = new List<Rule<T>>();
+		}
 
-        public void Rules(params Rule[] rules)
-        {
-            foreach (var rule in rules)
-            {
-                RuleList.Add(rule);
-            }
-        }
+		public List<Rule<T>> Rules { get; private set; }
 
-        public void Execute()
-        {
-            RuleList.ForEach(rule => rule.Execute());
-        }
-    }
+		public void AddRule(Rule<T> rule)
+		{
+			Rules.Add(rule);
+		}
+	}
 }
