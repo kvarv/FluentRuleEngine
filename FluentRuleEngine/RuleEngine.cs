@@ -5,10 +5,10 @@ namespace FluentRuleEngine
 {
 	public class RuleEngine<T>
 	{
-		private readonly List<Rule<T>> _initialRules;
 		private readonly List<Rule<T>> _availableRules;
-		private List<Rule<T>> _activatedRules;
 		private readonly List<Rule<T>> _executedRules;
+		private readonly List<Rule<T>> _initialRules;
+		private List<Rule<T>> _activatedRules;
 
 		public RuleEngine(RuleBase<T> ruleBase)
 		{
@@ -23,11 +23,11 @@ namespace FluentRuleEngine
 		{
 			ResetRuleEngine();
 			AddInitialRules();
-			ActivateRules(target);				
+			ActivateRules(target);
 			while (_activatedRules.Count > 0)
 			{
 				ExecuteActivatedRules(target);
-				ActivateRules(target);				
+				ActivateRules(target);
 			}
 			PrintExecutedRules();
 		}
@@ -54,6 +54,7 @@ namespace FluentRuleEngine
 			_activatedRules = _availableRules.Where(rule => rule.CanExecute(target)).ToList();
 			_activatedRules.ForEach(rule => _availableRules.Remove(rule));
 		}
+
 		private void ExecuteActivatedRules(T target)
 		{
 			_activatedRules.ForEach(rule => rule.Execute(target));

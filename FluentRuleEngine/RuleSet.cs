@@ -4,11 +4,8 @@ namespace FluentRuleEngine
 {
 	public class RuleSet<T>
 	{
-		private string _name;
-
-		public RuleSet(string name)
+		public RuleSet()
 		{
-			_name = name;
 			Rules = new List<Rule<T>>();
 		}
 

@@ -5,39 +5,38 @@ namespace Tests
 {
 	public class RuleEngineTests
 	{
-
 		[Fact]
 		public void ShouldExecuteRuleEngineOnSeveralTargets()
 		{
 			var ruleBase = new RuleBase<Target>();
-			var ruleSet = new RuleSet<Target>("rule set");
-			var rule = new Rule<Target>("rule 1", "", t => string.IsNullOrEmpty(t.Name), t => t.Name = "goran");
+			var ruleSet = new RuleSet<Target>();
+			var rule = new Rule<Target>("rule 1", "", t => t.Number == 0, t => t.Number = 1);
 			ruleSet.AddRule(rule);
 			ruleBase.AddRuleSet(ruleSet);
 			var ruleEngine = new RuleEngine<Target>(ruleBase);
 
 			var target = new Target();
 			ruleEngine.Execute(target);
-			Assert.Equal("goran", target.Name);
+			Assert.Equal(1, target.Number);
 			var newTarget = new Target();
 			ruleEngine.Execute(newTarget);
-			Assert.Equal("goran", newTarget.Name);
+			Assert.Equal(1, newTarget.Number);
 		}
 
 		[Fact]
 		public void ShouldForwardChainRules()
 		{
 			var ruleBase = new RuleBase<Target>();
-			var ruleSet = new RuleSet<Target>("rule set");
-			var rule = new Rule<Target>("rule 1", "description of rule 1", t => string.IsNullOrEmpty(t.Name), t => t.Name = "goran");
-			var rule2 = new Rule<Target>("rule 2", "", t => t.Name == "goran" , t => t.Name = "goran kvarv");
+			var ruleSet = new RuleSet<Target>();
+			var rule = new Rule<Target>("rule 1", "description of rule 1", t => t.Number == 0, t => t.Number = 1);
+			var rule2 = new Rule<Target>("rule 2", "", t => t.Number == 1, t => t.Number = 2);
 			ruleSet.AddRule(rule);
 			ruleSet.AddRule(rule2);
 			ruleBase.AddRuleSet(ruleSet);
 			var target = new Target();
 			var ruleEngine = new RuleEngine<Target>(ruleBase);
 			ruleEngine.Execute(target);
-			Assert.Equal("goran kvarv", target.Name);
+			Assert.Equal(2, target.Number);
 		}
 	}
 }

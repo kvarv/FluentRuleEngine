@@ -45,11 +45,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Builders\RuleBaseBuilder.cs" />
-    <Compile Include="Builders\RuleBuilder.cs" />
-    <Compile Include="Builders\RuleEngineBuilder.cs" />
-    <Compile Include="Builders\RuleSetBuilder.cs" />
-    <Compile Include="Builders\RuleSetExpression.cs" />
+    <Compile Include="Dsl\Builders\RuleBaseBuilder.cs" />
+    <Compile Include="Dsl\Expressions\IRuleSetExpression.cs" />
+    <Compile Include="Dsl\Builders\RuleSetBuilder.cs" />
+    <Compile Include="Dsl\Expressions\IRuleBaseExpression.cs" />
+    <Compile Include="Dsl\Expressions\RuleBaseExpression.cs" />
+    <Compile Include="Dsl\Expressions\RuleExpression.cs" />
+    <Compile Include="Dsl\Fluently.cs" />
+    <Compile Include="Dsl\Expressions\RuleSetExpression.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rule.cs" />
     <Compile Include="RuleBase.cs" />

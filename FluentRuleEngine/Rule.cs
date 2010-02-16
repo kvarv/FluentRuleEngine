@@ -7,8 +7,8 @@ namespace FluentRuleEngine
 	{
 		private readonly Action<T> _action;
 		private readonly Expression<Predicate<T>> _condition;
+		private readonly string _description;
 		private readonly string _name;
-		private string _description;
 
 		public Rule(string name, string description, Expression<Predicate<T>> condition, Action<T> action)
 		{
@@ -21,7 +21,7 @@ namespace FluentRuleEngine
 		public bool CanExecute(T target)
 		{
 			if (_condition == null) return false;
-			Predicate<T> condition = _condition.Compile();
+			var condition = _condition.Compile();
 			return condition(target);
 		}
 
@@ -33,9 +33,9 @@ namespace FluentRuleEngine
 
 		public void PrintRule()
 		{
-			if(!string.IsNullOrEmpty(_name)) 
+			if (!string.IsNullOrEmpty(_name))
 				Console.WriteLine(_name);
-			if (!string.IsNullOrEmpty(_description)) 
+			if (!string.IsNullOrEmpty(_description))
 				Console.WriteLine("  " + _description);
 			Console.WriteLine("  Condition: " + _condition + "\n");
 		}

@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 
 namespace FluentRuleEngine
@@ -11,12 +10,7 @@ namespace FluentRuleEngine
 		}
 
 
-		public List<RuleSet<T>> RuleSets{ get; private set;}
-
-		public void AddRuleSet(RuleSet<T> ruleSet)
-		{
-			RuleSets.Add(ruleSet);
-		}
+		public List<RuleSet<T>> RuleSets { get; private set; }
 
 		public List<Rule<T>> Rules
 		{
@@ -26,6 +20,11 @@ namespace FluentRuleEngine
 				RuleSets.ForEach(ruleSet => allRules.AddRange(ruleSet.Rules));
 				return allRules;
 			}
+		}
+
+		public void AddRuleSet(RuleSet<T> ruleSet)
+		{
+			RuleSets.Add(ruleSet);
 		}
 	}
 }
