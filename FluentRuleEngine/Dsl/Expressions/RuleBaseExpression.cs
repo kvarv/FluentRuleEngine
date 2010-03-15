@@ -19,7 +19,7 @@ namespace FluentRuleEngine.Dsl.Expressions
 			get { return _ruleSets; }
 		}
 
-		public RuleExpression<T> Rule(string name)
+		public RuleExpression<T> AddRule(string name)
 		{
 			var ruleExpression = new RuleExpression<T>();
 			ruleExpression.Name(name);
@@ -27,15 +27,16 @@ namespace FluentRuleEngine.Dsl.Expressions
 			return ruleExpression;
 		}
 
-		public void RuleSet(Action<IRuleSetExpression<T>> ruleSetExpressionAction)
+		public void AddRuleSet(Action<IRuleSetExpression<T>> ruleSetExpressionAction)
 		{
 			var ruleSetExpression = new RuleSetExpression<T>();
 			ruleSetExpressionAction(ruleSetExpression);
 			AddRulesToRuleSet(ruleSetExpression.RuleExpressions);
 		}
 
-		public void RuleSet(RuleSetBuilder<T> ruleSetBuilder)
+		public void AddRuleSet<TRuleSet>() where TRuleSet : RuleSetBuilder<T>
 		{
+			var ruleSetBuilder = Activator.CreateInstance<TRuleSet>();
 			ruleSetBuilder.Build();
 			AddRulesToRuleSet(ruleSetBuilder.RuleExpressions);
 		}

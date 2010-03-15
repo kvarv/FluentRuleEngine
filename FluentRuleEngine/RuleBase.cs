@@ -2,27 +2,27 @@ using System.Collections.Generic;
 
 namespace FluentRuleEngine
 {
-	public class RuleBase<T>
+	public class RuleBase<TTarget>
 	{
 		public RuleBase()
 		{
-			RuleSets = new List<RuleSet<T>>();
+			RuleSets = new List<RuleSet<TTarget>>();
 		}
 
 
-		public List<RuleSet<T>> RuleSets { get; private set; }
+		public List<RuleSet<TTarget>> RuleSets { get; private set; }
 
-		public List<Rule<T>> Rules
+		public List<Rule<TTarget>> Rules
 		{
 			get
 			{
-				var allRules = new List<Rule<T>>();
+				var allRules = new List<Rule<TTarget>>();
 				RuleSets.ForEach(ruleSet => allRules.AddRange(ruleSet.Rules));
 				return allRules;
 			}
 		}
 
-		public void AddRuleSet(RuleSet<T> ruleSet)
+		public void AddRuleSet(RuleSet<TTarget> ruleSet)
 		{
 			RuleSets.Add(ruleSet);
 		}

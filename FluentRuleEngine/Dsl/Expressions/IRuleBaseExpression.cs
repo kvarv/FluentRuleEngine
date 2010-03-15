@@ -5,8 +5,8 @@ namespace FluentRuleEngine.Dsl.Expressions
 {
 	public interface IRuleBaseExpression<T>
 	{
-		RuleExpression<T> Rule(string name);
-		void RuleSet(Action<IRuleSetExpression<T>> ruleSetExpressionAction);
-		void RuleSet(RuleSetBuilder<T> ruleSet);
+		RuleExpression<T> AddRule(string name);
+		void AddRuleSet(Action<IRuleSetExpression<T>> ruleSetExpressionAction);
+		void AddRuleSet<TRuleSet>() where TRuleSet : RuleSetBuilder<T>;
 	}
 }

@@ -51,7 +51,7 @@
     <Compile Include="Dsl\Expressions\IRuleBaseExpression.cs" />
     <Compile Include="Dsl\Expressions\RuleBaseExpression.cs" />
     <Compile Include="Dsl\Expressions\RuleExpression.cs" />
-    <Compile Include="Dsl\Fluently.cs" />
+    <Compile Include="Dsl\RuleEngineFor.cs" />
     <Compile Include="Dsl\Expressions\RuleSetExpression.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rule.cs" />

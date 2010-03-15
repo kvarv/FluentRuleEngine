@@ -22,7 +22,7 @@ namespace Tests
 			       		.Then(t => t.Number = 3)
 				);
 
-			RuleSet(new MyRuleSet());
+			RuleSet<MyRuleSet>();
 		}
 	}
 }
