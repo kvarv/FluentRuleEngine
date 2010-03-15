@@ -16,7 +16,7 @@ namespace FluentRuleEngine.Dsl.Expressions
 			return this;
 		}
 
-		public RuleExpression<T> WithDescription(string description)
+		public RuleExpression<T> Description(string description)
 		{
 			_description = description;
 			return this;

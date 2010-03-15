@@ -12,24 +12,24 @@ namespace Tests
 			var ruleEngine = RuleEngineFor<Target>.Initialize(ruleBase =>
 			                                                  	{
 			                                                  		ruleBase.AddRule.Named("rule 1")
-			                                                  			.WithDescription("description")
+			                                                  			.Description("description")
 			                                                  			.When(t => t.Number.Equals(0))
 			                                                  			.Then(t => t.Number = 1);
 
-			                                                  		ruleBase.AddRuleSet(ruleSet =>
-			                                                  		                    	{
-			                                                  		                    		ruleSet.AddRule.Named("rule 2")
-			                                                  		                    			.WithDescription("description")
-			                                                  		                    			.When(t => t.Number.Equals(1))
-			                                                  		                    			.Then(t => t.Number = 2);
+			                                                  		ruleBase.Add(ruleSet =>
+			                                                  		             	{
+			                                                  		             		ruleSet.AddRule.Named("rule 2")
+			                                                  		             			.Description("description")
+			                                                  		             			.When(t => t.Number.Equals(1))
+			                                                  		             			.Then(t => t.Number = 2);
 
-			                                                  		                    		ruleSet.AddRule.Named("rule 3")
-			                                                  		                    			.WithDescription("description")
-			                                                  		                    			.When(t => t.Number.Equals(2))
-			                                                  		                    			.Then(t => t.Number = 3);
-			                                                  		                    	});
+			                                                  		             		ruleSet.AddRule.Named("rule 3")
+			                                                  		             			.Description("description")
+			                                                  		             			.When(t => t.Number.Equals(2))
+			                                                  		             			.Then(t => t.Number = 3);
+			                                                  		             	});
 
-			                                                  		ruleBase.AddRuleSet<MyRuleSet>();
+			                                                  		ruleBase.Add<MyRuleSet>();
 			                                                  	});
 
 			var target = new Target();

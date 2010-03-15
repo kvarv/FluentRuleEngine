@@ -37,14 +37,14 @@ namespace FluentRuleEngine.Dsl.Expressions
 			}
 		}
 
-		public void AddRuleSet(Action<IRuleSetExpression<T>> ruleSetExpressionAction)
+		public void Add(Action<IRuleSetExpression<T>> ruleSetExpressionAction)
 		{
 			var ruleSetExpression = new RuleSetExpression<T>();
 			ruleSetExpressionAction(ruleSetExpression);
 			AddRulesToRuleSet(ruleSetExpression.RuleExpressions);
 		}
 
-		public void AddRuleSet<TRuleSet>() where TRuleSet : RuleSetBuilder<T>
+		public void Add<TRuleSet>() where TRuleSet : RuleSetBuilder<T>
 		{
 			var ruleSetBuilder = Activator.CreateInstance<TRuleSet>();
 			ruleSetBuilder.Build();
