@@ -21,7 +21,7 @@ namespace FluentRuleEngine.Dsl.Builders
 
 		public RuleExpression<T> Rule(string name)
 		{
-			return _ruleSetExpression.Rule(name);
+			return _ruleSetExpression.AddRuleWithName(name);
 		}
 	}
 }

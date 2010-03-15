@@ -27,7 +27,7 @@ namespace FluentRuleEngine.Dsl.Builders
 
 		public RuleExpression<T> Rule(string name)
 		{
-			return _ruleBaseExpression.AddRule(name);
+			return _ruleBaseExpression.AddRuleWithName(name);
 		}
 
 		public void RuleSet(params RuleExpression<T>[] ruleExpressions)

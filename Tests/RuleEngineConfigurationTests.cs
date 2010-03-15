@@ -11,20 +11,20 @@ namespace Tests
 			//Arrange
 			var ruleEngine = RuleEngineFor<Target>.Initialize(ruleBase =>
 			                                                  	{
-			                                                  		ruleBase.AddRule("rule 1")
-			                                                  			.Description("description")
+			                                                  		ruleBase.AddRule.Named("rule 1")
+			                                                  			.WithDescription("description")
 			                                                  			.When(t => t.Number.Equals(0))
 			                                                  			.Then(t => t.Number = 1);
 
 			                                                  		ruleBase.AddRuleSet(ruleSet =>
 			                                                  		                    	{
-			                                                  		                    		ruleSet.AddRule("rule 2")
-			                                                  		                    			.Description("description")
+			                                                  		                    		ruleSet.AddRule.Named("rule 2")
+			                                                  		                    			.WithDescription("description")
 			                                                  		                    			.When(t => t.Number.Equals(1))
 			                                                  		                    			.Then(t => t.Number = 2);
 
-			                                                  		                    		ruleSet.AddRule("rule 3")
-			                                                  		                    			.Description("description")
+			                                                  		                    		ruleSet.AddRule.Named("rule 3")
+			                                                  		                    			.WithDescription("description")
 			                                                  		                    			.When(t => t.Number.Equals(2))
 			                                                  		                    			.Then(t => t.Number = 3);
 			                                                  		                    	});

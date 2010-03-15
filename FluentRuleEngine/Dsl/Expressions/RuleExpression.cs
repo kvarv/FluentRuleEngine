@@ -10,13 +10,13 @@ namespace FluentRuleEngine.Dsl.Expressions
 		private string _description;
 		private string _name;
 
-		public RuleExpression<T> Name(string name)
+		public RuleExpression<T> Named(string name)
 		{
 			_name = name;
 			return this;
 		}
 
-		public RuleExpression<T> Description(string description)
+		public RuleExpression<T> WithDescription(string description)
 		{
 			_description = description;
 			return this;

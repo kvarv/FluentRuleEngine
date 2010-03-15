@@ -19,12 +19,22 @@ namespace FluentRuleEngine.Dsl.Expressions
 			get { return _ruleSets; }
 		}
 
-		public RuleExpression<T> AddRule(string name)
+		public RuleExpression<T> AddRuleWithName(string name)
 		{
 			var ruleExpression = new RuleExpression<T>();
-			ruleExpression.Name(name);
+			ruleExpression.Named(name);
 			_ruleExpressions.Add(ruleExpression);
 			return ruleExpression;
+		}
+
+		public RuleExpression<T> AddRule
+		{
+			get
+			{
+				var ruleExpression = new RuleExpression<T>();
+				_ruleExpressions.Add(ruleExpression);
+				return ruleExpression;
+			}
 		}
 
 		public void AddRuleSet(Action<IRuleSetExpression<T>> ruleSetExpressionAction)

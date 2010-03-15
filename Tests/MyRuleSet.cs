@@ -7,12 +7,12 @@ namespace Tests
 		public override void Build()
 		{
 			Rule("rule 4")
-				.Description("description")
+				.WithDescription("description")
 				.When(t => t.Number == 3)
 				.Then(t => t.Number = 4);
 
 			Rule("rule 5")
-				.Description("description");
+				.WithDescription("description");
 		}
 	}
 }

@@ -9,11 +9,9 @@ namespace FluentRuleEngine.Dsl
 	{
 		public static RuleEngine<TTarget> Initialize(Action<IRuleBaseExpression<TTarget>> ruleBaseExpressionAction)
 		{
-			var ruleBase = new RuleBase<TTarget>();
 			var ruleBaseExpression = new RuleBaseExpression<TTarget>();
 			ruleBaseExpressionAction(ruleBaseExpression);
-			AddDefaultRuleSet(ruleBaseExpression.RuleExpressions, ruleBase);
-			ruleBaseExpression.RuleSets.ForEach(ruleBase.AddRuleSet);
+			var ruleBase = CreateRuleBase(ruleBaseExpression.RuleSets, ruleBaseExpression.RuleExpressions);
 			return new RuleEngine<TTarget>(ruleBase);
 		}
 
@@ -21,15 +19,21 @@ namespace FluentRuleEngine.Dsl
 		{
 			var ruleBaseBuilder = Activator.CreateInstance<TRuleBase>();
 			ruleBaseBuilder.Build();
-			var ruleBase = new RuleBase<TTarget>();
-			AddDefaultRuleSet(ruleBaseBuilder.RuleExpressions, ruleBase);
-			ruleBaseBuilder.RuleSets.ForEach(ruleBase.AddRuleSet);
+			var ruleBase = CreateRuleBase(ruleBaseBuilder.RuleSets, ruleBaseBuilder.RuleExpressions);
 			return new RuleEngine<TTarget>(ruleBase);
 		}
 
-		private static void AddDefaultRuleSet<T>(List<RuleExpression<T>> ruleExpressions, RuleBase<T> ruleBase)
+		private static RuleBase<TTarget> CreateRuleBase(List<RuleSet<TTarget>> ruleSets, List<RuleExpression<TTarget>> ruleExpressions)
 		{
-			var defaultRuleSet = new RuleSet<T>();
+			var ruleBase = new RuleBase<TTarget>();
+			AddDefaultRuleSet(ruleExpressions, ruleBase);
+			ruleSets.ForEach(ruleBase.AddRuleSet);
+			return ruleBase;
+		}
+
+		private static void AddDefaultRuleSet(List<RuleExpression<TTarget>> ruleExpressions, RuleBase<TTarget> ruleBase)
+		{
+			var defaultRuleSet = new RuleSet<TTarget>();
 			ruleExpressions.ForEach(ruleBuilder => defaultRuleSet.AddRule(ruleBuilder));
 			ruleBase.AddRuleSet(defaultRuleSet);
 		}

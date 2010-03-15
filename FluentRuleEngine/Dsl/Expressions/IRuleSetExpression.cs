@@ -2,6 +2,6 @@
 {
 	public interface IRuleSetExpression<T>
 	{
-		RuleExpression<T> Rule(string name);
+		RuleExpression<T> AddRule { get; }
 	}
 }

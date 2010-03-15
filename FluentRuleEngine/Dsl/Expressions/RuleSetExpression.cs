@@ -11,12 +11,22 @@ namespace FluentRuleEngine.Dsl.Expressions
 
 		public List<RuleExpression<T>> RuleExpressions { get; private set; }
 
-		public RuleExpression<T> Rule(string name)
+		public RuleExpression<T> AddRule
 		{
-			var ruleBuilder = new RuleExpression<T>();
-			ruleBuilder.Name(name);
-			RuleExpressions.Add(ruleBuilder);
-			return ruleBuilder;
+			get
+			{
+				var ruleExpression = new RuleExpression<T>();
+				RuleExpressions.Add(ruleExpression);
+				return ruleExpression;
+			}
+		}
+
+		public RuleExpression<T> AddRuleWithName(string name)
+		{
+			var ruleExpression = new RuleExpression<T>();
+			ruleExpression.Named(name);
+			RuleExpressions.Add(ruleExpression);
+			return ruleExpression;
 		}
 	}
 }
