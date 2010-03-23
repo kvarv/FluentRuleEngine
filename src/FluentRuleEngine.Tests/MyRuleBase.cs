@@ -1,6 +1,6 @@
 ﻿using FluentRuleEngine.Dsl.Builders;
 
-namespace Tests
+namespace FluentRuleEngine.Tests
 {
 	public class MyRuleBase : RuleBaseBuilder<Target>
 	{
@@ -12,14 +12,14 @@ namespace Tests
 				.Then(t => t.Number = 1);
 
 			RuleSet(
-			       	Rule("rule 2")
-			       		.Description("description")
-			       		.When(t => t.Number == 1)
-			       		.Then(t => t.Number = 2),
-			       	Rule("rule 3")
-			       		.Description("description")
-			       		.When(t => t.Number == 2)
-			       		.Then(t => t.Number = 3)
+				Rule("rule 2")
+					.Description("description")
+					.When(t => t.Number == 1)
+					.Then(t => t.Number = 2),
+				Rule("rule 3")
+					.Description("description")
+					.When(t => t.Number == 2)
+					.Then(t => t.Number = 3)
 				);
 
 			AddRuleSet<MyRuleSet>();

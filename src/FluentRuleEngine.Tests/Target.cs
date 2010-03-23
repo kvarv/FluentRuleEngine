@@ -1,4 +1,4 @@
-﻿namespace Tests
+﻿namespace FluentRuleEngine.Tests
 {
 	public class Target
 	{

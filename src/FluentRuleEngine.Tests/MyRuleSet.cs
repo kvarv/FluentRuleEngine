@@ -1,6 +1,6 @@
 ﻿using FluentRuleEngine.Dsl.Builders;
 
-namespace Tests
+namespace FluentRuleEngine.Tests
 {
 	public class MyRuleSet : RuleSetBuilder<Target>
 	{

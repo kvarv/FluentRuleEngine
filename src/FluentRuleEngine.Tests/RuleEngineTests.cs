@@ -1,7 +1,6 @@
-using FluentRuleEngine;
 using Xunit;
 
-namespace Tests
+namespace FluentRuleEngine.Tests
 {
 	public class RuleEngineTests
 	{

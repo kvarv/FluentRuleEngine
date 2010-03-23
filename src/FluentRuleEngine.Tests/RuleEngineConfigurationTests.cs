@@ -1,7 +1,7 @@
 using FluentRuleEngine.Dsl;
 using Xunit;
 
-namespace Tests
+namespace FluentRuleEngine.Tests
 {
 	public class RuleEngineConfigurationTests
 	{
