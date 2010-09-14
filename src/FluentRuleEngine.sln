@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentRuleEngine", "FluentRuleEngine\FluentRuleEngine.csproj", "{79E4FBAB-14E6-49F3-AE6B-CA5FD3BE7BCC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentRuleEngine.Tests", "FluentRuleEngine.Tests\FluentRuleEngine.Tests.csproj", "{F285A743-024E-4284-9ADA-AADFFB7A500B}"
